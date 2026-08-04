@@ -1,0 +1,62 @@
+# Environment variables and local secrets
+.env
+.env.*
+!.env.example
+!.env.template
+**/application-local.properties
+**/application-local.yml
+**/application-local.yaml
+**/application-secret.properties
+**/application-secret.yml
+**/application-secret.yaml
+
+# Node.js
+node_modules/
+.pnpm-store/
+.npm/
+.yarn/cache/
+.yarn/unplugged/
+dist/
+coverage/
+
+# Java / Kotlin
+.gradle/
+build/
+target/
+out/
+*.class
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+logs/
+*.log
+
+# Editors
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
