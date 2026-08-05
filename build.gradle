@@ -1,0 +1,87 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group = 'com.financialstep'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+ext {
+    springVersion = '5.3.39'
+    springSecurityVersion = '5.8.16'
+    mybatisVersion = '3.5.16'
+    mybatisSpringVersion = '2.1.2'
+    mysqlConnectorVersion = '8.4.0'
+    hikariVersion = '5.1.0'
+    springDataRedisVersion = '2.7.18'
+    lettuceVersion = '6.3.2.RELEASE'
+    springfoxVersion = '3.0.0'
+    log4j2Version = '2.23.1'
+    log4jdbcVersion = '1.16'
+    jjwtVersion = '0.12.6'
+    jacksonVersion = '2.17.2'
+    junitVersion = '5.10.3'
+    mockitoVersion = '5.12.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.springframework:spring-context:${springVersion}"
+    implementation "org.springframework:spring-webmvc:${springVersion}"
+    implementation "org.springframework:spring-jdbc:${springVersion}"
+    implementation "org.springframework:spring-tx:${springVersion}"
+
+    implementation "org.springframework.security:spring-security-web:${springSecurityVersion}"
+    implementation "org.springframework.security:spring-security-config:${springSecurityVersion}"
+
+    implementation "org.mybatis:mybatis:${mybatisVersion}"
+    implementation "org.mybatis:mybatis-spring:${mybatisSpringVersion}"
+    implementation "com.mysql:mysql-connector-j:${mysqlConnectorVersion}"
+    implementation "com.zaxxer:HikariCP:${hikariVersion}"
+
+    implementation "org.springframework.data:spring-data-redis:${springDataRedisVersion}"
+    implementation "io.lettuce:lettuce-core:${lettuceVersion}"
+
+    implementation "io.springfox:springfox-swagger2:${springfoxVersion}"
+    implementation "io.springfox:springfox-swagger-ui:${springfoxVersion}"
+
+    implementation "org.apache.logging.log4j:log4j-api:${log4j2Version}"
+    implementation "org.apache.logging.log4j:log4j-core:${log4j2Version}"
+    implementation "org.apache.logging.log4j:log4j-web:${log4j2Version}"
+    implementation "org.apache.logging.log4j:log4j-jcl:${log4j2Version}"
+    implementation "org.apache.logging.log4j:log4j-slf4j2-impl:${log4j2Version}"
+    implementation "org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:${log4jdbcVersion}"
+
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+
+    implementation "io.jsonwebtoken:jjwt-api:${jjwtVersion}"
+    runtimeOnly "io.jsonwebtoken:jjwt-impl:${jjwtVersion}"
+    runtimeOnly "io.jsonwebtoken:jjwt-jackson:${jjwtVersion}"
+
+    providedCompile 'javax.servlet:javax.servlet-api:4.0.1'
+    providedCompile 'javax.servlet.jsp:javax.servlet.jsp-api:2.3.3'
+
+    testImplementation "org.springframework:spring-test:${springVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:${junitVersion}"
+    testImplementation "org.mockito:mockito-core:${mockitoVersion}"
+    testImplementation "org.mockito:mockito-junit-jupiter:${mockitoVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+test {
+    useJUnitPlatform()
+}
